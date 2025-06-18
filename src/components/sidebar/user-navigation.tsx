@@ -34,7 +34,7 @@ export function UserNavigation({ user }: UserNavigationProps) {
   const navigate = useNavigate();
   const handleLogout = async () => {
     try {
-      await logout();
+      logout();
       await navigate("/");
       toast.success("Logout successful");
     } catch {
