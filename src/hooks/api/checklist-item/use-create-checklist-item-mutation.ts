@@ -11,11 +11,10 @@ export const useCreateChecklistItemMutation = (checklistId: string) => {
     mutationFn: (data: TCreateChecklistItemRequest) => createChecklistItem(checklistId, data),
     onSuccess: async () => {
       await queryClient.invalidateQueries({
-        queryKey: [QUERY_KEY.CHECKLIST_ITEM.LIST, checklistId],
-      });
-
-      await queryClient.invalidateQueries({
         queryKey: [QUERY_KEY.CHECKLIST.LIST],
+      });
+      await queryClient.invalidateQueries({
+        queryKey: [QUERY_KEY.CHECKLIST_ITEM.LIST, checklistId],
       });
     },
   });
