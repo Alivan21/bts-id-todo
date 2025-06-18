@@ -4,10 +4,14 @@ import {
   TUpdateChecklistItemRequest,
   TUpdateChecklistItemStatusRequest,
 } from "./schema";
-import { TChecklistItemResponse, TDeleteChecklistItemResponse } from "./type";
+import {
+  TChecklistItemResponse,
+  TChecklistItemsResponse,
+  TDeleteChecklistItemResponse,
+} from "./type";
 
 export const getChecklistItems = async (checklistId: string) => {
-  const response = await httpClient.get<TChecklistItemResponse>(`/checklist/${checklistId}/item`);
+  const response = await httpClient.get<TChecklistItemsResponse>(`/checklist/${checklistId}/item`);
   return response.data;
 };
 

@@ -7,4 +7,5 @@ export type TChecklistItem = {
 };
 
 export type TChecklistItemResponse = SuccessResponse<TChecklistItem>;
+export type TChecklistItemsResponse = SuccessResponse<TChecklistItem[]>;
 export type TDeleteChecklistItemResponse = SuccessResponse<null>;

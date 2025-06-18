@@ -1,4 +1,5 @@
-import { CheckCircle, Circle, Trash2 } from "lucide-react";
+import { CheckCircle, Circle, Trash2, EyeIcon } from "lucide-react";
+import { Link } from "react-router";
 import { TChecklist } from "@/api/checklist/type";
 import { TChecklistItem } from "@/api/checklist-item/type";
 import { Button } from "@/components/ui/button";
@@ -66,6 +67,12 @@ export default function ChecklistCard({ checklist, onDelete }: ChecklistCardProp
         <CardTitle className="flex items-center justify-between">
           <span>{checklist.name}</span>
           <div className="flex items-center gap-2">
+            <Link to={`/dashboard/${checklist.id}`}>
+              <Button className="h-8 w-8 p-0" size="sm" variant="outline">
+                <EyeIcon className="h-4 w-4" />
+                <span className="sr-only">View details</span>
+              </Button>
+            </Link>
             {checklist.checklistCompletionStatus ? (
               <CheckCircle className="h-5 w-5 text-green-500" />
             ) : (
