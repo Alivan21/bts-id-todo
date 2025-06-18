@@ -53,7 +53,7 @@ export function DashboardSidebar() {
                   const hasChildren = item.items && item.items.length > 0;
                   const isActive =
                     pathname === item.href ||
-                    (hasChildren && item.items.some((subItem) => pathname === subItem.href));
+                    (hasChildren && item.items?.some((subItem) => pathname === subItem.href));
 
                   if (hasChildren) {
                     return (
@@ -79,7 +79,7 @@ export function DashboardSidebar() {
                           </CollapsibleTrigger>
                           <CollapsibleContent>
                             <SidebarMenuSub>
-                              {item.items.map((subItem) => (
+                              {item.items?.map((subItem) => (
                                 <SidebarMenuSubItem key={subItem.href}>
                                   <SidebarMenuSubButton
                                     asChild
