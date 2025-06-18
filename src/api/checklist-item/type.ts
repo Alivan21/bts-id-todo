@@ -2,8 +2,8 @@ import { SuccessResponse } from "@/common/types/base-response";
 
 export type TChecklistItem = {
   id: string;
-  itemName: string;
-  isCompleted: boolean;
+  name: string;
+  itemCompletionStatus: boolean;
 };
 
 export type TChecklistItemResponse = SuccessResponse<TChecklistItem>;
