@@ -1,24 +1,20 @@
 import { useQueryClient } from "@tanstack/react-query";
-import { deleteUser } from "@/api/users";
+import { deleteChecklistItem } from "@/api/checklist-item";
 import { QUERY_KEY } from "@/common/constants/query-keys";
 import { useMutation } from "@/hooks/request/use-mutation";
 
-/**
- * Hook to delete a user
- * @param id - The ID of the user to delete
- */
-export const useDeleteUserMutation = (id: string) => {
+export const useDeleteChecklistItemMutation = (checklistId: string, itemId: string) => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: () => deleteUser(id),
+    mutationFn: () => deleteChecklistItem(checklistId, itemId),
     onSuccess: async () => {
       await queryClient.invalidateQueries({
-        queryKey: [QUERY_KEY.USER.LIST],
+        queryKey: [QUERY_KEY.CHECKLIST_ITEM.LIST, checklistId],
       });
 
       await queryClient.invalidateQueries({
-        queryKey: [QUERY_KEY.USER.DETAIL, id],
+        queryKey: [QUERY_KEY.CHECKLIST_ITEM.DETAIL, checklistId, itemId],
       });
     },
   });

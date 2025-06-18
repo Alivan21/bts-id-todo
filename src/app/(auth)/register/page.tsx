@@ -2,9 +2,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { User } from "lucide-react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { register } from "@/api/auth";
 import { registerSchema, TRegisterRequest } from "@/api/auth/schema";
+import { ROUTES } from "@/common/constants/routes";
 import { ErrorResponse } from "@/common/types/base-response";
 import RegisterForm from "./_components/form";
 
@@ -43,6 +44,12 @@ export default function RegisterPage() {
         </div>
       </section>
       <RegisterForm form={form} onSubmit={handleSubmit} />
+      <p className="text-muted-foreground mb-8 text-center text-sm">
+        Already have an account?{" "}
+        <Link className="text-primary hover:underline" to={ROUTES.LOGIN}>
+          Login here
+        </Link>
+      </p>
     </main>
   );
 }

@@ -1,7 +1,10 @@
 export const QUERY_KEY = {
-  USER: {
-    LIST: "userList",
-    DETAIL: "userDetail",
-    OPTIONS: "userOptions",
+  CHECKLIST: {
+    LIST: "checklistList",
+    DETAIL: "checklistDetail",
+  },
+  CHECKLIST_ITEM: {
+    LIST: "checklistItemList",
+    DETAIL: "checklistItemDetail",
   },
 };

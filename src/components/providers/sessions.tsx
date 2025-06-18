@@ -11,7 +11,7 @@ type SessionContextType = {
   user: UserData | null;
   token: string | null;
   login: (credentials: TLoginRequest) => Promise<void>;
-  logout: () => Promise<void>;
+  logout: () => void;
   isLoading: boolean;
 };
 
@@ -20,7 +20,7 @@ const SessionContext = React.createContext<SessionContextType>({
   user: null,
   token: null,
   login: async () => {},
-  logout: async () => {},
+  logout: () => {},
   isLoading: true,
 });
 
@@ -90,10 +90,10 @@ export const SessionProvider: React.FC<SessionProviderProps> = ({
     }
   };
 
-  const handleLogout = async () => {
+  const handleLogout = () => {
     try {
       setIsLoading(true);
-      await logout();
+      logout();
       SessionAuthCookies.remove();
       httpClient.defaults.headers.common.Authorization = undefined;
       setToken(null);

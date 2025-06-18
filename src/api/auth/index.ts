@@ -1,4 +1,5 @@
 import { httpClient } from "@/libs/axios";
+import { SessionAuthCookies } from "@/libs/cookies";
 import { TLoginRequest, TRegisterRequest } from "./schema";
 import { TLoginResponse, TRegisterResponse } from "./type";
 
@@ -12,6 +13,6 @@ export const login = async (credentials: TLoginRequest): Promise<TLoginResponse>
   return response.data;
 };
 
-export const logout = async (): Promise<void> => {
-  await httpClient.post("/logout");
+export const logout = (): void => {
+  SessionAuthCookies.remove();
 };

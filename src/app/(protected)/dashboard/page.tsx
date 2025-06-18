@@ -2,8 +2,11 @@ import { Home } from "lucide-react";
 import { ROUTES } from "@/common/constants/routes";
 import { BreadcrumbsItem } from "@/components/breadcrumbs";
 import PageContainer from "@/components/providers/page-container";
+import { useChecklistsQuery } from "@/hooks/api/checklist/use-checklists-query";
 
 export default function DashboardPage() {
+  const { data: checklists } = useChecklistsQuery();
+  console.log(checklists);
   const breadcrumbs: BreadcrumbsItem[] = [
     {
       text: <Home className="h-4 w-4" />,
