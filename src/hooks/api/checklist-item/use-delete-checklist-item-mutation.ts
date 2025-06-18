@@ -16,6 +16,10 @@ export const useDeleteChecklistItemMutation = (checklistId: string, itemId: stri
       await queryClient.invalidateQueries({
         queryKey: [QUERY_KEY.CHECKLIST_ITEM.DETAIL, checklistId, itemId],
       });
+
+      await queryClient.invalidateQueries({
+        queryKey: [QUERY_KEY.CHECKLIST.LIST],
+      });
     },
   });
 };

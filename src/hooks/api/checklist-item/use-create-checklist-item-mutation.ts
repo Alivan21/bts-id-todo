@@ -13,6 +13,10 @@ export const useCreateChecklistItemMutation = (checklistId: string) => {
       await queryClient.invalidateQueries({
         queryKey: [QUERY_KEY.CHECKLIST_ITEM.LIST, checklistId],
       });
+
+      await queryClient.invalidateQueries({
+        queryKey: [QUERY_KEY.CHECKLIST.LIST],
+      });
     },
   });
 };

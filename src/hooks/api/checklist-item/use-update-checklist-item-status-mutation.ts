@@ -12,6 +12,10 @@ export const useUpdateChecklistItemStatusMutation = (checklistId: string, itemId
       updateChecklistItemStatus(checklistId, itemId, data),
     onSuccess: async () => {
       await queryClient.invalidateQueries({
+        queryKey: [QUERY_KEY.CHECKLIST.LIST],
+      });
+
+      await queryClient.invalidateQueries({
         queryKey: [QUERY_KEY.CHECKLIST_ITEM.LIST, checklistId],
       });
 
