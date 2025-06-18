@@ -6,4 +6,6 @@ export type TLoginItem = {
   type: string;
 };
 
-export type TLoginResponse = SuccessResponse<TLoginItem>;
+export type TLoginResponse = SuccessResponse<string>;
+
+export type TRegisterResponse = SuccessResponse<string>;

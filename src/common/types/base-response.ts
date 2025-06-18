@@ -1,32 +1,35 @@
 /**
  * Base API response interface that all response types should extend
  */
-export interface BaseResponse {
+export interface BaseResponse<T = unknown> {
+  statusCode: number;
   message: string;
-  timestamp: string;
+  errorMessage: string | null;
+  data: T;
 }
 
 /**
  * Standard success response with data payload
  */
-export interface SuccessResponse<T = unknown> extends BaseResponse {
-  data: T;
+export interface SuccessResponse<T = unknown> extends BaseResponse<T> {
+  statusCode: number;
+  errorMessage: null;
 }
 
 /**
  * Standard error response with error details
  */
-export interface ErrorResponse extends BaseResponse {
-  error: {
-    code: string;
-    details?: unknown;
-  };
+export interface ErrorResponse extends BaseResponse<null> {
+  statusCode: number;
+  errorMessage: string;
+  data: null;
 }
 
 /**
  * Paginated response for list endpoints
  */
-export interface PaginatedResponse<T = unknown> extends SuccessResponse<T[]> {
+export type PaginatedResponse<T = unknown> = SuccessResponse<{
+  items: T[];
   meta?: {
     total: number;
     page: number;
@@ -42,7 +45,7 @@ export interface PaginatedResponse<T = unknown> extends SuccessResponse<T[]> {
       [key: string]: string | undefined;
     };
   };
-}
+}>;
 
 /**
  * Helper type to represent any valid API response

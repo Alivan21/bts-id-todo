@@ -30,13 +30,7 @@ registerMiddleware({
     const token = SessionAuthCookies.get();
     const isAuthenticated = token && decodeJwt(token) !== null;
 
-    const publicRoutes = [
-      "/login",
-      "/register",
-      "/forgot-password",
-      "/reset-password",
-      "/verify-email",
-    ];
+    const publicRoutes = ["/login", "/register"];
 
     const isPublicRoute = publicRoutes.some(
       (route) => pathname === route || pathname.startsWith(`${route}/`)
