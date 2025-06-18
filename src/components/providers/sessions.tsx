@@ -71,13 +71,10 @@ export const SessionProvider: React.FC<SessionProviderProps> = ({
     try {
       setIsLoading(true);
       const response = await login(credentials);
-      const { token, expires_at } = response.data;
+      const { token } = response.data;
       httpClient.defaults.headers.common.Authorization = `Bearer ${token}`;
 
-      const expiryDate = new Date(expires_at);
-      SessionAuthCookies.set(token, {
-        expires: expiryDate,
-      });
+      SessionAuthCookies.set(token);
 
       setToken(token);
       setUser(decodeJwt<UserData>(token));

@@ -28,12 +28,12 @@ export default function LoginForm({ form, onSubmit, isSubmitting }: LoginFormPro
       >
         <FormField
           control={form.control}
-          name="email"
+          name="username"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>Username</FormLabel>
               <FormControl>
-                <Input className="w-full" placeholder="Email" type="email" {...field} />
+                <Input className="w-full" placeholder="Username" type="text" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

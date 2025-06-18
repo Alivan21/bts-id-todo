@@ -15,7 +15,7 @@ export default function LoginPage() {
   const form = useForm<TLoginRequest>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      email: "",
+      username: "",
       password: "",
     },
   });
@@ -38,7 +38,7 @@ export default function LoginPage() {
         <div className="space-y-1">
           <h1 className="mt-4 text-xl font-bold tracking-tight">Log in to our application</h1>
           <p className="text-muted-foreground mb-8 text-center text-sm">
-            Enter your email and password to login
+            Enter your username and password to login
           </p>
         </div>
       </section>
